@@ -1,0 +1,14 @@
+Division by zero in position 6
+Variable <a> is not defined
+Invalid symbol <_>
+Closing bracket is missing for bracket in position 4
+Garbage symbols after the expression
+Only variable assignment is possible
+Expression should be an assignment
+Invalid character for number 1a
+Invalid variable name c4
+Number is too big 123456789123456789
+Incorrect symbol in position 4
+Incorrect symbol in position 5
+Incorrect symbol in position 7
+Incorrect symbol in position 7
