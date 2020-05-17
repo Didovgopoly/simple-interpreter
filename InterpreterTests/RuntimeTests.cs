@@ -15,7 +15,7 @@ namespace InterpreterTests
         public void Setup()
         {
             _output = new List<string>();
-            
+
             _outputMock = new Mock<IOutput>();
             _outputMock.Setup(x => x.WriteLine(It.IsAny<string>()))
                 .Callback<string>(x => _output.Add(x));
@@ -30,7 +30,7 @@ namespace InterpreterTests
         public void UsesVariables()
         {
             var runtime = CreateRuntime();
-            
+
             runtime.Execute("a = 5 + 3");
             runtime.Execute("b = 2 * 2");
             runtime.Execute("c = a + b");
@@ -47,11 +47,12 @@ namespace InterpreterTests
         [TestCase("c = (5 + 6)", "c = 11", Description = "Brackets")]
         [TestCase("c = (5 + 6) * 2", "c = 22", Description = "Complex Brackets")]
         [TestCase("   c   =    16    /   2   ", "c = 8", Description = "Long spaces")]
-        [TestCase("c = 16/0", "Division by zero in position 6", Description = "Division by zero")]
         [TestCase("cab = 5 * 4", "cab = 20", Description = "Long variable name")]
+        [TestCase("c = 16/0", "Division by zero in position 6", Description = "Division by zero")]
         [TestCase("c = a + 3", "Variable <a> is not defined", Description = "Variable not defined")]
         [TestCase("_c = 1 + 3", "Invalid symbol <_>", Description = "Invalid symbol not defined")]
-        [TestCase("c = (1 + 3", "Closing bracket is missing for bracket in position 4", Description = "Missing open bracket")]
+        [TestCase("c = (1 + 3", "Closing bracket is missing for bracket in position 4",
+            Description = "Missing open bracket")]
         [TestCase("c = (1 + 3))", "Garbage symbols after the expression", Description = "Extra symbols")]
         [TestCase("5 = (1 + 3))", "Only variable assignment is possible", Description = "non variable assignment")]
         [TestCase("c + (1 + 3))", "Expression should be an assignment", Description = "not an assignment")]
@@ -74,7 +75,19 @@ namespace InterpreterTests
         {
             var runtime = CreateRuntime();
             runtime.Execute(line);
-            
+
+            _output.Should().ContainSingle().Which.Should().Be(outcome);
+        }
+
+        [TestCase("a = 7 * 4 + 2 * 6", "a = 40")]
+        [TestCase("a = 7 * (4 + 2) * 6", "a = 252")]
+        [TestCase("a = (7 + 5) * (4 + 2) * 6 - 12 / (4 - 1) ", "a = 428")]
+        [TestCase("a = ((((7 + 5) * (4 + 2) * 6 - 12 / (4 - 1)) + 3) * (6 - 2)) / 4", "a = 431")]
+        public void ExecuteComplexExpressions(string line, string outcome)
+        {
+            var runtime = CreateRuntime();
+            runtime.Execute(line);
+
             _output.Should().ContainSingle().Which.Should().Be(outcome);
         }
     }
