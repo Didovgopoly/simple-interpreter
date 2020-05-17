@@ -1,0 +1,79 @@
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.opendb
+*.VC.db
+*.htm
+*.opensdf
+*.sdf
+*.aps
+
+# Build results
+[Bb]in/
+[Dd]ebug/
+[Dd]ebug32/
+[Rr]elease/
+[Rr]elease32/
+[Oo]bj/
+ipch/*
+Deployed/*
+*.lib
+*.pdb
+
+# Visual Studio 2015 cache/options directory
+.vs/
+
+# Cake
+tools/cake/*
+
+# NuGet
+*.nupkg
+packages/**
+
+# Test artifacts
+integration_test_logs/*
+tests_results/*
+
+# Third party artifacts
+Protocol/ServerApi/server_pom
+Protocol/ServerApi/**/.git/*
+
+# git temp files
+*.orig
+
+# Temp files
+*.~*
+
+# Exclusions
+!tools/cake/packages.config
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Rider
+# Rider auto-generates .iml files, and contentModel.xml
+.idea/**/*.iml
+.idea/**/contentModel.xml
+.idea/**/modules.xml
+.idea/**/encodings.xml
+.idea/**/misc.xml
+/.idea/.idea.Parser/.idea/vcs.xml
+/.idea/.idea.Parser/.idea/indexLayout.xml
