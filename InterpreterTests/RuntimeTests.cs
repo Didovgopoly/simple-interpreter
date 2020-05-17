@@ -57,6 +57,7 @@ namespace InterpreterTests
         [TestCase("c + (1 + 3))", "Expression should be an assignment", Description = "not an assignment")]
         [TestCase("c = 1a + 2", "Invalid character for number 1a", Description = "Letter after number")]
         [TestCase("c4 = 1 + 2", "Invalid variable name c4", Description = "Variable with letter")]
+        [TestCase("c = 123456789123456789 + 2", "Number is too big 123456789123456789", Description = "Number to big")]
         public void ExecutesLine(string line, string outcome)
         {
             var runtime = CreateRuntime();

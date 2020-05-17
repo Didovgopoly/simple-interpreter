@@ -83,8 +83,13 @@ namespace SimpleInterpreter
             {
                 throw new ParserException($"Invalid character for number {value}{_currentChar.Value}");
             }
+
+            if (int.TryParse(value, out var integer))
+            {
+                return integer;
+            }
             
-            return int.Parse(value);
+            throw new ParserException($"Number is too big {value}");
         }    
         
         private string Variable()
