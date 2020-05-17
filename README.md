@@ -34,5 +34,10 @@ digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
    1. run SimpleInterpreter.exe
    1. or execute `dotnet SimpleInterpreter.dll` in CLI
 
-To run unit tests run `dotnet test Parser.sln -v n`
+## Tests
+Test files can be found `testFiles` directory
+
+Additionally to execute unit tests from RuntimeTests.cs run `dotnet test Parser.sln -v n`
+
+
 
